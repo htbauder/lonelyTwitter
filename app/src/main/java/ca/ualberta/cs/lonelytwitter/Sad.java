@@ -3,6 +3,7 @@ package ca.ualberta.cs.lonelytwitter;
 // created by Hayden Bauder
 
 import java.util.Date;
+import android.util.Log;
 
 public class Sad extends Mood {
 
@@ -11,7 +12,7 @@ public class Sad extends Mood {
 	}
 
 	public Sad(Date date) {
-		super(date)
+		super(date);
 	}
 
 	public void printMood() {
