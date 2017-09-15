@@ -16,6 +16,6 @@ public class Sad extends Mood {
 	}
 
 	public void printMood() {
-		Log.d("I am Sad.");
+		Log.d("Print mood: ", "I am Sad.");
 	}
 }
