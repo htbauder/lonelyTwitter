@@ -30,8 +30,8 @@ public class LonelyTwitterActivity extends Activity {
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
-	private ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
-	private ArrayAdapter<Tweet> adapter;
+	private ArrayList<NormalTweet> tweetList = new ArrayList<Tweet>();
+	private ArrayAdapter<NormalTweet> adapter;
 
 
 
@@ -77,8 +77,18 @@ public class LonelyTwitterActivity extends Activity {
 	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
-		loadFromFile(); // TODO replace this with elastic search
-		adapter = new ArrayAdapter<Tweet>(this,
+		//loadFromFile(); // TODO replace this with elastic search
+		
+		ElasticSearchTweetController.GetTweetsTask getTweetsTask = new ElasticSearchTweetController.GetTweetsTask();
+		getTweetsTask.execute("");
+		try {
+			tweetList = getTweetsTask.get();
+		} catch (exception e) {
+			Log.i("Error", "Could not get tweets from async object");
+		}
+			
+		
+		adapter = new ArrayAdapter<NormalTweet>(this,
 				R.layout.list_item, tweetList);
 		oldTweetsList.setAdapter(adapter);
 	}
