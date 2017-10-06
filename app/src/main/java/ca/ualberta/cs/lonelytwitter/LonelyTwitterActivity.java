@@ -50,10 +50,13 @@ public class LonelyTwitterActivity extends Activity {
 			public void onClick(View v) {
 				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
-				Tweet newTweet = new NormalTweet(text);
+				
+				NormalTweet newTweet = new NormalTweet(text);
 				tweetList.add(newTweet);
 				adapter.notifyDataSetChanged();
-				saveInFile(); // TODO replace this with elastic search
+				//saveInFile(); // TODO replace this with elastic search
+				ElasticSearchTweetController.AddTweetsTask addTweetsTask = new ElasticSearchTweetController.AddTweetsTask();
+				addTweetsTask.execute(newTweet);
 			}
 		});
 
