@@ -30,8 +30,6 @@ public class ElasticsearchTweetController {
                     DocumentResult execute = client.execute(index);
                     if(execute.isSucceeded()){
                         tweet.setId(execute.getId());
-                    } else {
-                        
                     }
                 }
                 catch (Exception e) {
@@ -44,17 +42,29 @@ public class ElasticsearchTweetController {
     }
 
     // TODO we need a function which gets tweets from elastic search
-/*    public static class GetTweetsTask extends AsyncTask<String, Void, ArrayList<NormalTweet>> {
+    public static class GetTweetsTask extends AsyncTask<String, Void, ArrayList<NormalTweet>> {
         @Override
         protected ArrayList<NormalTweet> doInBackground(String... search_parameters) {
             verifySettings();
 
             ArrayList<NormalTweet> tweets = new ArrayList<NormalTweet>();
 
-                // TODO Build the query
+            // TODO Build the query
+            Search search = new Search.Builder(search_parameters[0])
+                .addIndex("testing")
+                .addType("tweet")
+                .build();
 
             try {
                // TODO get the results of the query
+                SearchResult result = client.execute(search);
+                if (result.isSucceeded()) {
+                    List<NormalTweet> foundTweets = result.getSourceAsObjectList(NormalTweet.class);
+                    tweets.addAll(foundtweets);
+                }
+                else {
+                    Log.i("Error", "the search query found no results");
+                }
             }
             catch (Exception e) {
                 Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch server!");
@@ -62,7 +72,7 @@ public class ElasticsearchTweetController {
 
             return tweets;
         }
-    }*/
+    }
 
 
 
