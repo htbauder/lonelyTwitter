@@ -11,7 +11,15 @@ public class TweetList {
 		tweets.add(tweet);
 	}
 
+	public void getTweet(Tweet tweet) {
+
+	}
+
 	public boolean hasTweet(Tweet tweet) {
 		return tweets.contains(tweet);
+	}
+	
+	public void delete(Tweet tweet) {
+		tweets.remove(tweet);
 	}
 }

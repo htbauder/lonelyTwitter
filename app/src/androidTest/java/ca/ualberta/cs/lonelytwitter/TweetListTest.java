@@ -14,4 +14,27 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
 		tweets.add(tweet);
 		assertTrue(tweets.hasTweet(tweet));
 	}
+
+	public void testDelete() {
+		TweetList tweets = new TweetList();
+		Tweet tweet = new NormalTweet("test");
+		tweets.add(tweet);
+		tweets.delete(tweet);
+		assertFalse(tweets.hasTweet(tweet));
+	}
+
+	public void testHasTweet() {
+	 	TweetList list =new TweetList();
+		Tweet tweet = new NormalTweet();
+		list.add(tweet);
+		assertTrue(list.hasTweet(tweet));
+	}
+
+	public void testGetTweet() {
+		TweetList list =new TweetList();
+		Tweet tweet = new NormalTweet();
+		list.add(tweet);
+		Tweet returnedTweet = list.getTweet(0);
+		assertEquals(returnedTweet.getMessage(), tweet.getMessage());
+	}
 }
