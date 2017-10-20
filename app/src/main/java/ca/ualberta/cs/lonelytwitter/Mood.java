@@ -23,7 +23,7 @@ public abstract class Mood {
 		return date;
 	}
 
-	public void setDate(int value){
+	public void setDate(Date value){
 		this.date = value;
 	}
 }

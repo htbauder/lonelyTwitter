@@ -3,6 +3,7 @@ package ca.ualberta.cs.lonelytwitter;
 // created by Hayden Bauder
 
 import java.util.Date;
+import android.util.Log;
 
 public class Happy extends Mood {
 
@@ -11,11 +12,11 @@ public class Happy extends Mood {
 	}
 
 	public Happy(Date date) {
-		super(date)
+		super(date);
 	}
 
 	public void printMood() {
-		Log.d("I am Happy.");
+		Log.d("Print mood: ", "I am Happy.");
 	}
 }
 
